@@ -1068,6 +1068,48 @@ textarea {
 }
 
 
+.notification-header {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.notification-header.success { color: green; }
+.notification-header.error { color: red; }
+.notification-header.info { color: blue; }
+
+.notification-content {
+  font-size: 16px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.notification-children {
+  margin-top: 10px;
+}
+
+.notification-close-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.notification-close-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
 /* 
 .cpd-content {
   width: 60%;
