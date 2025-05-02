@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import LogbookCategory from "../components/logbookCategory";
 import { FaClipboardList, FaChevronRight } from "react-icons/fa"; 
 import axios from "axios";
-import "../styles.css";
 
 const LogbookPage = () => {
   const navigate = useNavigate();
   const userEmail = useSelector((state) => state.auth?.user?.email);
-
   const [categoryList, setCategoryList] = useState([]);
 
-  // ✅ Fetch categories from the backend
   useEffect(() => {
-    //const userEmail = useSelector((state) => state.auth?.user?.email); // Get logged-in user's email
-
-const fetchCategories = async () => {
-  try {
-    const response = await axios.get(`http://localhost:5000/api/category/all?email=${encodeURIComponent(userEmail)}`);
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/category/all?email=${encodeURIComponent(userEmail)}`
+        );
 
         const categories = response.data.map((category) => ({
           name: category.name,
           description: `Manage ${category.name}`,
-          icon: <FaClipboardList />, // Default icon
-          route: `/generated-form/${category.name}`, // ✅ Navigate dynamically
+          icon: <FaClipboardList />,
+          route: `/generated-form/${category.name}`,
         }));
         setCategoryList(categories);
       } catch (error) {
@@ -37,6 +33,7 @@ const fetchCategories = async () => {
   }, []);
 
   return (
+
     <div className="w-full max-w-5xl p-6 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4 text-[#a9d0cd] text-center font-[cursive]">Welcome to your new logbook!</h1>
       <p className="text-[#deefed] text-center mb-4">
@@ -67,6 +64,7 @@ const fetchCategories = async () => {
         You can opt into one of our growing list of other, more specialist, logbook categories at any time using the "Add category" 
         button on the category picker. If you have any questions, please contact us via email.
       </p>
+
     </div>
   );
 };
